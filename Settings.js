@@ -301,8 +301,8 @@ var Settings = (function (_super) {
         //panel tittles and subtitles
         this.TITLES = [Translate('Narration = '), Translate('Background = '), Translate('Game Timer = '), Translate('Role Timer = '), Translate('Other = ')];
         this.SUBTITLES = [
-            Translate(Gender + ' = ') + ", VOL " + VOLUME.toString() + ", " + Language.toUpperCase(),
-            " " + BCaudio + ", Vol " + BCVOL.toString(),
+            Translate(Gender + ' = ').replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}) + ", " + Translate('vol = ').replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}) + " " + VOLUME.toString() + ", " + Language.toUpperCase(),
+            " " + BCaudio.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}) + ", " + Translate('vol = ') + " " + BCVOL.toString(),
             " " + s0 + ":00" + s1 + s2,
             " 00:" + s4 + s3,
             TS // no found for expert and verbose even in english

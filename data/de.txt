@@ -1,4 +1,4 @@
---German Translation (DE) 3.0.7
+﻿--German Translation (DE) 3.0.7
 
 --Main Menu:
 Timer = Timer
@@ -112,7 +112,7 @@ hunter = Jäger
 tanner = Gerber
 bodyguard = Bodyguard
 auraseer = Wahrsagerin
-princepromo = Prinz
+prince = Prinz
 
 --Narration:
 werewolf_wake = Werwölfe, wacht auf und seht euch nach anderen Werwölfen um.

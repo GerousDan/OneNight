@@ -85,7 +85,7 @@ var Narration = (function (_super) {
         //Language
         this.Language_sp = this.game.make.sprite(this.game.world.centerX - 64, 580, 'item_smallON');
         this.Language_sp.anchor.set(0.5, 0.5);
-        var st = Translate(this.AllL[this.CurrentL].L + ' = ') + " " + (this.AllL[this.CurrentL].P).toUpperCase();
+        var st = Translate(this.AllL[this.CurrentL].L + ' = ') + ": " + (this.AllL[this.CurrentL].P).toUpperCase();
         this.L_txt = this.game.make.text(0, 5, st, this.style2);
         this.L_txt.anchor.set(0.5, 0.5);
         this.addChild(this.Language_sp);
@@ -129,7 +129,7 @@ var Narration = (function (_super) {
         NewLanguage(this.AllL[this.CurrentL].P);
     };
     Narration.prototype.RefreshTexts = function () {
-        var st = Translate(this.AllL[this.CurrentL].L + ' = ') + " " + (this.AllL[this.CurrentL].P).toUpperCase();
+        var st = Translate(this.AllL[this.CurrentL].L + ' = ') + ": " + (this.AllL[this.CurrentL].P).toUpperCase();
         this.L_txt.text = st;
         this.Vol.VolTxt.text = Translate("vol = ");
         this.Title.text = Translate('Narration = ');

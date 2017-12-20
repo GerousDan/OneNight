@@ -236,7 +236,7 @@ var PlayState = (function (_super) {
     PlayState.prototype.Step3 = function () {
         if (this.ActionCounter + 1 < this.ActionsPerCharc.length) {
             console.log("----------------> step3 PAUSE for ");
-            var st = Translate('PAUSE for = ') + " " + Secs.toString() + Translate('seconds = ');
+            var st = "(" + Translate('PAUSE for = ') + " " + Secs.toString() + Translate('seconds = ') + " )";
             // console.log("st : ",st);
             this.TEXT(st, this.style2);
             this.TE = this.game.time.events.add(Phaser.Timer.SECOND * Secs, this.Step4, this);
