@@ -111,17 +111,25 @@ var PlayState = (function (_super) {
             console.log("At6:",At6);
             */
             //checkthislinecase
-            console.log("----------------Cheking case");
+            // console.log("----------------Checking case");
             if (or1.length > 0) {
-            }
-            else {
-                or1_satisfied = true;
-            }
+                if (this._PlayersNamesInOrder.indexOf(this.Corr(or1)) != -1) {
+                    //  console.log("Char:",this.Corr(or1) ,'satisfied'); 
+                    or1_satisfied = true;
+                }
+            } 
+			// else {
+                // or1_satisfied = true;
+            // }
             if (or2.length > 0) {
-            }
-            else {
-                or2_satisfied = true;
-            }
+                if (this._PlayersNamesInOrder.indexOf(this.Corr(or2)) != -1) {
+                    //  console.log("Char:",this.Corr(or2) ,'satisfied'); 
+                    or2_satisfied = true;
+                }
+            } 
+			// else {
+                // or2_satisfied = true;
+            // }
             if (Char.length > 0) {
                 //  console.log("looking for :",this.Corr(Char) );
                 if (this._PlayersNamesInOrder.indexOf(this.Corr(Char)) != -1) {
@@ -179,8 +187,8 @@ var PlayState = (function (_super) {
             else {
                 not_satisfied = true;
             }
-            console.log(or1_satisfied, or2_satisfied, Char_satisfied, and1_satisfied, and2_satisfied, not_satisfied);
-            if (or1_satisfied && or2_satisfied && Char_satisfied && and1_satisfied && and2_satisfied && not_satisfied) {
+            // console.log(or1_satisfied, or2_satisfied, Char_satisfied, and1_satisfied, and2_satisfied, not_satisfied);
+            if ((or1_satisfied || or2_satisfied || Char_satisfied) && and1_satisfied && and2_satisfied && not_satisfied) {
                 if (or1.length + or2.length + Char.length + and1.length + and2.length != 0) {
                     console.log(" GOOD LINE : ", c, " : ", OrderA[c][0]);
                     this.LinesPerCharc++;
@@ -283,8 +291,15 @@ var PlayState = (function (_super) {
     };
     PlayState.prototype.Corr = function (s, p) {
         var st = s;
-        if (s == "werewolves") {
-            st = "werewolf";
+        if (s == "werewolves") { //           st = "werewolf";
+            for (var en = 0; en < this._PlayersNamesInOrder.length; en++) {
+                for (var aa = 0; aa < werewolves_names.length; aa++) {
+                    if (this._PlayersNamesInOrder[en] == werewolves_names[aa]) {
+                        st = this._PlayersNamesInOrder[en];
+                        console.log('werewolves >->-> ', st);
+                    }
+                }
+            }
         }
         if (s == "anywolves") {
             for (var en = 0; en < this._PlayersNamesInOrder.length; en++) {

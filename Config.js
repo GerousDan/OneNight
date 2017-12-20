@@ -1,5 +1,6 @@
-var anyaliens_names = ["oracle", "alien", "synthetic", "cow", "groob", "zerb", "leader", "psychic", "rascal", "exposer", "blob", "mortician"];
-var anywolves_names = ["werewolf", "alphawolf", "mysticwolf"];
+var anyaliens_names = ["alien", "synthetic", "groob", "zerb"];
+var werewolves_names = ["werewolf", "alphawolf", "mysticwolf"];
+var anywolves_names = ["dreamwolf", werewolves_names];
 var Papa;
 var Callback1; //callback to recreate the list of icons
 var SetsA = [];
@@ -232,6 +233,10 @@ var list3 = [];
 var list4 = [];
 //Bonus list
 var list5 = [];
+//DayBreak and Vampires
+// var list6 = [];
+//DayBreak without Vampires
+// var list7 = [];
 var KEY;
 var FN;
 var FRAME;
@@ -271,8 +276,18 @@ function CreateListes() {
             MyImage(SetsA[i][0][0]);
             list5.push({ Order: i, icon: SetsA[i][0][0], N: SetsA[i][0][7], K: "card" + KEY, F: "cards_" + FRAME + ".png" });
         }
+		//DayBreak and Vampires
+/*         if (SetsA[i][0][8] == "1" || SetsA[i][0][8] == "2" || SetsA[i][0][8] == "3" || SetsA[i][0][8] == "4" || SetsA[i][0][8] == "5") {
+            MyImage(SetsA[i][0][0]);
+            list6.push({ Order: i, icon: SetsA[i][0][0], N: SetsA[i][0][8], K: "card" + KEY, F: "cards_" + FRAME + ".png" });
+        } */
+		//DayBreak without Vampires
+/*         if (SetsA[i][0][9] == "1" || SetsA[i][0][9] == "2" || SetsA[i][0][9] == "3" || SetsA[i][0][9] == "4" || SetsA[i][0][9] == "5") {
+            MyImage(SetsA[i][0][0]);
+            list7.push({ Order: i, icon: SetsA[i][0][0], N: SetsA[i][0][9], K: "card" + KEY, F: "cards_" + FRAME + ".png" });
+        } */
     }
-    console.log('OneNight list: list1', list1.length, list1);
+    // console.log('OneNight list: list1', list1.length, list1);
     //console.log('DayBreak list: list2',list2);
     /*
     console.log('vampire list: list3',list3.length);
@@ -288,11 +303,27 @@ var List5Selected = false;
 var currentList = [];
 function GetCurrentList() {
     currentList = [];
+/*	var SetsSelection = [List1Selected,List2Selected,List5Selected,List3Selected,List5Selected,List4Selected,List5Selected];
+ 	for (var i = 0; i < SetsA.length; i++) {
+		var bDisplayed = 0;
+		var n = 1;
+		for (var j = 0; j < 7; j++) {
+			if (SetsSelection[j]) {
+				bDisplayed += parseInt(SetsA[i][0][j+1]);
+			}
+		}
+		console.log(SetsA[i][0][0], bDisplayed);
+		if (bDisplayed > 0) {
+			currentList.push({ Order: i, icon: SetsA[i][0][0], N: SetsA[i][0][n], K: "card" + KEY, F: "cards_" + FRAME + ".png" });
+		}
+	}  */
     if (List1Selected) {
         currentList = currentList.concat(list1);
     }
     if (List2Selected) {
         currentList = currentList.concat(list2);
+		// if (List3Selected) currentList = currentList.concat(list7);
+		// else currentList = currentList.concat(list8);
     }
     if (List3Selected) {
         currentList = currentList.concat(list3);
