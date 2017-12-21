@@ -499,7 +499,8 @@ function Translate(Word) {
     for (var t = 0; t < TranslationArray.length; t++) {
         var str = TranslationArray[t][0].toString();
         var result = null;
-        if (str.indexOf(Word) != -1) {
+        if (str.indexOf(Word) == 0) {//!= -1) {
+			// console.log("row ", t+1, " col ", str.indexOf(Word));
             var st = str.indexOf("=");
             result = str.substring(st + 1, str.length);
             break;

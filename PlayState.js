@@ -33,6 +33,26 @@ var PlayState = (function (_super) {
         this._SPRITE = this.game.make.sprite(0, 0, '');
         this._SPRITE.anchor.set(0.5, 0.5);
         this.Cadre.addChild(this._SPRITE);
+        // button PAUSE
+        this._PauseBtn = this.game.make.button(this.game.world.width * 0.22, this.game.world.height * 7.25 / 8, 'button');
+        this._PauseBtn.anchor.set(0.5, 0.5);
+        this.Pstyle = { font: "48px kabel", fill: "#FFFFFF", boundsAlignH: "center", boundsAlignV: "middle" };
+        this.Pstyle.align = "center";
+        this.PauseText = this.game.make.text(0, 0, Translate('Pause = '), this.Pstyle);
+        this.PauseText.anchor.set(0.5, 0.5);
+        this.PauseText.x = this._PauseBtn.x;
+        this.PauseText.y = 3 + this._PauseBtn.y;
+        this.addChild(this._PauseBtn);
+        this.addChild(this.PauseText);
+        // button STOP
+        this._StopBtn = this.game.make.button(this.game.world.width * 0.78, this.game.world.height * 7.25 / 8, 'button');
+        this._StopBtn.anchor.set(0.5, 0.5);
+        this.StopText = this.game.make.text(0, 0, Translate('Stop = '), this.Pstyle);
+        this.StopText.anchor.set(0.5, 0.5);
+        this.StopText.x = this._StopBtn.x;
+        this.StopText.y = 3 + this._StopBtn.y;
+        this.addChild(this._StopBtn);
+        this.addChild(this.StopText);
         Me_PlaySate = this;
         game.add.existing(this);
     }
@@ -151,7 +171,7 @@ var PlayState = (function (_super) {
                 }
                 else if (and1.indexOf(">") != -1) {
                     F1 = this.CheckThisString(and1);
-                    s_tocheck = and1.substring(0, and1.length - 2);
+                    s_tocheck = and1.substring(0, and1.indexOf(">"));
                     if (this._PlayersNamesInOrder.indexOf(this.Corr(s_tocheck)) != -1 && F1) {
                         and1_satisfied = true;
                     }
@@ -166,6 +186,26 @@ var PlayState = (function (_super) {
                 and1_satisfied = true;
             }
             if (and2.length > 0) {
+                var s_tocheck = and2;
+                var F1 = true;
+                if (and2 == "lone") {
+                    F1 = this.CheckThisString(and2);
+                    if (F1) {
+                        and2_satisfied = true;
+                    }
+                }
+                else if (and2.indexOf(">") != -1) {
+                    F1 = this.CheckThisString(and2);
+                    s_tocheck = and2.substring(0, and2.indexOf(">"));
+                    if (this._PlayersNamesInOrder.indexOf(this.Corr(s_tocheck)) != -1 && F1) {
+                        and2_satisfied = true;
+                    }
+                }
+                else {
+                    if (this._PlayersNamesInOrder.indexOf(this.Corr(s_tocheck)) != -1 && F1) {
+                        and2_satisfied = true;
+                    }
+                }
             }
             else {
                 and2_satisfied = true;
@@ -180,6 +220,7 @@ var PlayState = (function (_super) {
                 }
                 else {
                     if (this._PlayersNamesInOrder.indexOf(this.Corr(not)) == -1) {
+						// console.log("true to not ", this.Corr(not));
                         not_satisfied = true;
                     }
                 }
@@ -285,6 +326,7 @@ var PlayState = (function (_super) {
         SR.PlaySound(Language + '_' + Gender + "_" + OrderA[235][0][6], this.Quit, this);
     };
     PlayState.prototype.update = function () {
+		
     };
     PlayState.prototype.Quit = function () {
         this.QUIT = true;
@@ -331,11 +373,13 @@ var PlayState = (function (_super) {
         // console.log(index,this.Corr(s));
         // console.log(this._Players[index]);
         // console.log(this._Players[index].K,this._Players[index].F);
-        imagedata = { K: this._Players[index].K, F: this._Players[index].F };
-        //console.log(imagedata);
-        if (imagedata == null) {
-            console.log("!! no image founded for ", s);
-        }
+        if (index < 0) {
+			MyImage(this.Corr(s));
+			imagedata = {K: "card" + KEY, F: "cards_" + FRAME + ".png"};
+        } else {
+			imagedata = { K: this._Players[index].K, F: this._Players[index].F };
+			//console.log(imagedata);			
+		}
         return imagedata;
     };
     PlayState.prototype.CheckThisString = function (S) {
@@ -352,13 +396,12 @@ var PlayState = (function (_super) {
             }
         }
         if (S.indexOf(">") != -1) {
-            var COND = parseInt(S.charAt(S.length - 1));
-            //console.log(S);
-            //console.log("COND",">",COND);
+            var COND = parseInt(S.substring(S.indexOf(">")+1, S.length));
+            // console.log("COND",">",S.substring(S.indexOf(">")+1, S.length));
             //console.log(and1.substring(0,and1.length-2));
-            var ss = this.Corr(S.substring(0, S.length - 2));
+            var ss = this.Corr(S.substring(0, S.indexOf(">")));
             // console.log('ss',ss);
-            console.log(countInArray(this._PlayersNamesInOrder, ss));
+            // console.log(countInArray(this._PlayersNamesInOrder, ss));
             if (countInArray(this._PlayersNamesInOrder, ss) > COND) {
                 VALUE = true;
             }
