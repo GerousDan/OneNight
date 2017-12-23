@@ -309,6 +309,7 @@ var Settings = (function (_super) {
         ];
     };
     Settings.prototype.ShowHelp = function () {
+		SR.PlaySound('sfx_tap');
         this.FirstMenu.visible = false;
         this.LogoGroup.visible = false;
         this.HelpText.text = 'MAIN';

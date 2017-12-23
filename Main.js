@@ -46,6 +46,8 @@ var Main = (function (_super) {
         this._Settings._HelpBtn.events.onInputDown.add(this.HM, this);
         this._PlayState = new PlayState(this.game);
         this._PlayState.visible = false;
+		this._PlayState._PauseBtn.events.onInputDown.add(this.PausePlay, this);
+		this._PlayState._StopBtn.events.onInputDown.add(this.StopPlay, this);
     };
     Main.prototype.AddList = function () {
         //console.log(List1Selected,List2Selected,List3Selected,List4Selected,List5Selected);
@@ -88,6 +90,12 @@ var Main = (function (_super) {
             console.log("show Help ...");
             this._Settings.ShowHelp();
         }
+    };
+    Main.prototype.PausePlay = function () {
+
+    };
+    Main.prototype.StopPlay = function () {
+
     };
     Main.prototype.update = function () {
         if (RunUpdate) {
