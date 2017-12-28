@@ -1,5 +1,3 @@
-/// <reference path="phaser.d.ts"/>
-/// <reference path="Config.ts"/>
 var SoundReader = (function () {
     function SoundReader() {
         console.log("sound Reader Ready");

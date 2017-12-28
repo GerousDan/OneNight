@@ -3,9 +3,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-/// <reference path="phaser.d.ts"/>
-/// <reference path="Config.ts"/>
-/// <reference path="VOL.ts"/>
 var PlayState = (function (_super) {
     __extends(PlayState, _super);
     function PlayState(game) {
@@ -34,7 +31,7 @@ var PlayState = (function (_super) {
         this._SPRITE.anchor.set(0.5, 0.5);
         this.Cadre.addChild(this._SPRITE);
         // button PAUSE
-        this._PauseBtn = this.game.make.button(this.game.world.width * 0.22, this.game.world.height * 7.25 / 8, 'button');
+        this._PauseBtn = this.game.make.button(this.game.world.width * 0.25, this.game.world.height * 7.25 / 8, 'button');
         this._PauseBtn.anchor.set(0.5, 0.5);
         this.Pstyle = { font: "48px kabel", fill: "#FFFFFF", boundsAlignH: "center", boundsAlignV: "middle" };
         this.Pstyle.align = "center";
@@ -45,7 +42,7 @@ var PlayState = (function (_super) {
         this.addChild(this._PauseBtn);
         this.addChild(this.PauseText);
         // button STOP
-        this._StopBtn = this.game.make.button(this.game.world.width * 0.78, this.game.world.height * 7.25 / 8, 'button');
+        this._StopBtn = this.game.make.button(this.game.world.width * 0.75, this.game.world.height * 7.25 / 8, 'button');
         this._StopBtn.anchor.set(0.5, 0.5);
         this.StopText = this.game.make.text(0, 0, Translate('Stop = '), this.Pstyle);
         this.StopText.anchor.set(0.5, 0.5);

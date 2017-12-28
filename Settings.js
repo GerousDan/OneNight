@@ -1,12 +1,3 @@
-/// <reference path="phaser.d.ts"/>
-/// <reference path="Config.ts"/>
-/// <reference path="ItemMenu.ts"/>
-/// <reference path="Narration.ts"/>
-/// <reference path="GameTimer.ts"/>
-/// <reference path="RoleTimer.ts"/>
-/// <reference path="Background.ts"/>
-/// <reference path="OtherOptions.ts"/>
-/// <reference path="ScrollabelText.ts"/>
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -24,7 +15,7 @@ var Settings = (function (_super) {
         // add first menu
         this.CreateFirstMenu();
         // button Back
-        this._BackBtn = this.game.make.button(this.game.world.width * 0.22, this.game.world.height * 7.25 / 8, 'button_back');
+        this._BackBtn = this.game.make.button(this.game.world.width * 0.25, this.game.world.height * 7.25 / 8, 'button_back');
         this._BackBtn.anchor.set(0.5, 0.5);
         this.Pstyle = { font: "48px kabel", fill: "#FFFFFF", boundsAlignH: "center", boundsAlignV: "middle" };
         this.Pstyle.align = "center";
@@ -44,7 +35,7 @@ var Settings = (function (_super) {
             }
         }
         // button Help
-        this._HelpBtn = this.game.make.button(this.game.world.width * 0.78, this.game.world.height * 7.25 / 8, 'button');
+        this._HelpBtn = this.game.make.button(this.game.world.width * 0.75, this.game.world.height * 7.25 / 8, 'button');
         this._HelpBtn.anchor.set(0.5, 0.5);
         this.HelpText = this.game.make.text(0, 0, Translate('Help = '), this.Pstyle);
         this.HelpText.anchor.set(0.5, 0.5);
@@ -103,6 +94,7 @@ var Settings = (function (_super) {
         this.isHelp = true;
     };
     Settings.prototype.Narration_Menu = function () {
+        SR.PlaySound('sfx_tap');
         this._Narration = new Narration(this.game, Translate('Narration = '));
         this.addChild(this._Narration);
         this.FirstMenu.visible = false;
@@ -115,6 +107,7 @@ var Settings = (function (_super) {
         this.BackTo = "Parent";
     };
     Settings.prototype.Background_Menu = function () {
+        SR.PlaySound('sfx_tap');
         this.scolllmask.visible = true;
         this._Background = new Background(this.game, Translate('Background = '));
         this.addChildAt(this._Background, 0);
@@ -128,6 +121,7 @@ var Settings = (function (_super) {
         this.BackTo = "Parent";
     };
     Settings.prototype.GameTimer_Menu = function () {
+        SR.PlaySound('sfx_tap');
         this._GameTimer = new GameTimer(this.game, Translate('Game Timer = '));
         this.addChild(this._GameTimer);
         this.FirstMenu.visible = false;
@@ -140,6 +134,7 @@ var Settings = (function (_super) {
         this.BackTo = "Parent";
     };
     Settings.prototype.RoleTimer_Menu = function () {
+        SR.PlaySound('sfx_tap');
         this._RoleTimer = new RoleTimer(this.game, Translate('Role Timer = '));
         this.addChild(this._RoleTimer);
         this.FirstMenu.visible = false;
@@ -152,6 +147,7 @@ var Settings = (function (_super) {
         this.BackTo = "Parent";
     };
     Settings.prototype.Other_Menu = function () {
+        SR.PlaySound('sfx_tap');
         this._OtherOptions = new OtherOptions(this.game, Translate('Other Options = '));
         this.addChild(this._OtherOptions);
         this.FirstMenu.visible = false;

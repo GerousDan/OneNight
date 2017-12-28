@@ -1,18 +1,3 @@
-/// <reference path="phaser.d.ts"/>
-/// <reference path="Config.ts"/>
-/// <reference path="DraggableSprite.ts"/>
-/// <reference path="ContinueButton.ts"/>
-/// <reference path="HomeMenu.ts"/>
-/// <reference path="List.ts"/>
-/// <reference path="ItemMenu.ts"/>
-/// <reference path="Settings.ts"/>
-/// <reference path="Narration.ts"/>
-/// <reference path="VOL.ts"/>
-/// <reference path="GameTimer.ts"/>
-/// <reference path="RoleTimer.ts"/>
-/// <reference path="Background.ts"/>
-/// <reference path="PlayState.ts"/>
-/// <reference path="AboutSounds.ts"/>
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -27,8 +12,8 @@ var Main = (function (_super) {
         this.create_Main();
     };
     Main.prototype.create_Main = function () {
-        console.log("* --------------------------- create Main *");
-        Translate('Timer');
+        //console.log("* --------------------------- create Main *");
+        //Translate('Timer');
         Me = this;
         //add background
         this.game.add.sprite(0, 0, 'background');
@@ -95,7 +80,13 @@ var Main = (function (_super) {
 
     };
     Main.prototype.StopPlay = function () {
-
+        SR.PlaySound('sfx_tap');
+        this._PlayState.QUIT = true;                
+        this._HomeMenu.visible = true;
+        this._Settings.visible = false;
+        this._List.visible = true;
+        this._PlayState.visible = false;
+        //this.create_Main();
     };
     Main.prototype.update = function () {
         if (RunUpdate) {
@@ -121,3 +112,4 @@ var Main = (function (_super) {
     };
     return Main;
 }(Phaser.State));
+ 

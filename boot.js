@@ -1,6 +1,3 @@
-/// <reference path="phaser.d.ts"/>
-/// <reference path="Config.ts"/>
-/// <reference path="SoundReader.ts"/>
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -18,7 +15,7 @@ var Boot = (function (_super) {
         this.Boot_create();
     };
     Boot.prototype.Boot_create = function () {
-        console.log(" - Boot state -");
+        //console.log(" - Boot state -");
         this.game.renderer.renderSession.roundPixels = true;
         this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         this.game.scale.parentIsWindow = true;
